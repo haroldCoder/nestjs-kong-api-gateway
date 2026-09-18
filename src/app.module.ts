@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { createObserveModule } from '@nestjs/observe';
 import { AppController } from './app.controller.js';
 import { AppService } from './app.service.js';
+import { KongModule } from './common/kong/kong.module.js';
 
 export const { ObserveModule, ObserveInstrument } = createObserveModule();
 
@@ -14,6 +15,7 @@ export const { ObserveModule, ObserveInstrument } = createObserveModule();
       appSecret: process.env.OBSERVER_APP_SECRET as string,
       serviceId: process.env.OBSERVER_SERVICE_ID as string,
     }),
+    KongModule,
   ],
   controllers: [AppController],
   providers: [AppService],
